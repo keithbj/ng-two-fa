@@ -1,0 +1,15 @@
+<div [formGroup]="form">
+  <label class="container">
+    <input
+      [formControlName]="name"
+      required
+      [name]="name"
+      [type]="'radio'"
+      [id]="'radio-' + item.id"
+      [value]="item.number"
+      (change)="handleSelection(item.number)"
+    />
+    <span class="checkmark"></span>
+    <img class="pad-mobile" src="../../../assets/mobile_25.png" alt="" />
+  </label>
+</div>

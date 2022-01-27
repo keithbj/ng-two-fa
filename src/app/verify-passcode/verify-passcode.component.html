@@ -1,0 +1,101 @@
+<div class="VerifyPasscodesComponent container">
+  <form [formGroup]="form">
+    <label class="title form-lable">
+      We're sending you a text now
+    </label>
+    <label class="text1 form-lable">
+      Enter your 6-digit passcode below:
+    </label>
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-6">
+          <input
+            formControlName="passcode"
+            id="passcode"
+            type="text"
+            class="form-control"
+            autocomplete="off"
+            (keyup)="handleInput()"
+          />
+          <div
+            *ngIf="passcode.touched && passcode.invalid"
+            class="alert alert-danger"
+          >
+            <div *ngIf="passcode.errors.invalidPasscode">
+              You didn't enter the expected verification code.
+            </div>
+            <div *ngIf="!passcode.errors.invalidPasscode">
+              <div *ngIf="passcode.errors.required">
+                Passcode field is required.
+              </div>
+              <div *ngIf="!passcode.errors.required">
+                Passcode should be 6 numeric characters.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <Button
+            id="sendNewCodeButton"
+            variant="link"
+            type="button"
+            class="btn link btn-link"
+            (click)="handleNewCode()"
+          >
+            Send a new code
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <label class="text2 form-lable">
+      It may take a few moments for your code to arrive.
+    </label>
+    <label class="text2 form-lable">
+      If your code hasn't arrived after a few moments, you should request a new
+      one.
+    </label>
+
+    <div class="form-group">
+      <button
+        id="cantDoButton"
+        type="button"
+        variant="link"
+        class="btn link btn-link"
+        (click)="handleCantDoThis()"
+      >
+        Cant do this?
+      </button>
+    </div>
+
+    <div class="form-group">
+      <hr />
+    </div>
+
+    <div class="form-group">
+      <button
+        id="cancelButton"
+        type="button"
+        variant="link"
+        class="btn link btn-link"
+        (click)="handleCancel()"
+      >
+        Cancel
+      </button>
+      <button
+        id="continueButton"
+        type="button"
+        variant="info"
+        class="button btn btn-info float-right"
+        (click)="handleSubmit()"
+        [disabled]="form.invalid"
+      >
+        Continue
+      </button>
+    </div>
+
+    <p>{{ form.value | json }}</p>
+  </form>
+</div>

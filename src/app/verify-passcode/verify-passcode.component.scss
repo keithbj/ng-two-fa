@@ -1,0 +1,13 @@
+@import '../../variables';
+
+@media all and (min-width: 480px) {
+  .VerifyPasscodesComponent {
+    padding: 60px 0;
+  }
+
+  .VerifyPasscodesComponent form {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 10px;
+  }
+}

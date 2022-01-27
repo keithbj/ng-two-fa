@@ -1,0 +1,25 @@
+@import '../../variables';
+
+@media all and (min-width: 480px) {
+  .SmsTelNumbersComponent {
+    padding: 60px 0;
+  }
+
+  .SmsTelNumbersComponent form {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 10px;
+  }
+}
+
+.NumbersSpinner {
+  padding-top: 20px;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

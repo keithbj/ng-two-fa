@@ -1,0 +1,76 @@
+<div class="SmsTelNumbersComponent container">
+  <form [formGroup]="form">
+    <label class="title form-lable">
+      Verify yourself with a passcode
+    </label>
+    <label class="text1 form-lable">
+      Make sure you have your mobile to hand. We'll send you a passcode by text.
+    </label>
+    <label class="text2 form-lable">
+      Which mobile number would you like us to send the text message to?
+    </label>
+
+    <div class="form-group">
+      <div *ngIf="phoneNumbers">
+        <div *ngFor="let item of phoneNumbers">
+          <div class="form-row">
+            <div class="col-sm-2 col-4">
+              <app-radio
+                [form]="form"
+                [name]="'number'"
+                [item]="item"
+                (radioChange)="handleSelection($event)"
+              ></app-radio>
+            </div>
+
+            <div class="text2 col-sm-10 col-8">
+              {{ item.number }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!phoneNumbers">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+    <div class="form-group">
+      <button
+        id="cantDoButton"
+        type="button"
+        variant="link"
+        class="btn link btn-link"
+        (click)="handleCantDoThis()"
+      >
+        Cant do this?
+      </button>
+    </div>
+
+    <div class="form-group">
+      <hr />
+    </div>
+
+    <div class="form-group">
+      <button
+        id="cancelButton"
+        type="button"
+        variant="link"
+        class="btn link btn-link"
+        (click)="handleCancel()"
+      >
+        Cancel
+      </button>
+      <button
+        id="continueButton"
+        type="button"
+        variant="info"
+        class="button btn btn-info float-right"
+        (click)="handleSubmit(form.value)"
+        [disabled]="form.invalid"
+      >
+        Continue
+      </button>
+    </div>
+
+    <p>{{ form.value | json }}</p>
+  </form>
+</div>
